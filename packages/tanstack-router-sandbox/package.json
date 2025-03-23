@@ -5,10 +5,9 @@
   "author": "awls-geogeorgiou <georgios.georgiou@allwyn-lotterysolutions.com>",
   "homepage": "https://github.com/geogeorgiou/js-framework-bg#readme",
   "license": "ISC",
-  "main": "lib/tanstack-router-sandbox.js",
+  "type": "module",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "lib": "lib/src"
   },
   "files": [
     "lib"
@@ -18,7 +17,31 @@
     "url": "git+https://github.com/geogeorgiou/js-framework-bg.git"
   },
   "scripts": {
-    "test": "node ./__tests__/tanstack-router-sandbox.test.js"
+    "start": "cd lib && vite --port 3000",
+    "build": "cd lib && vite build && tsc",
+    "serve": "cd lib && vite preview",
+    "test": "cd lib && vitest run"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.6",
+    "@tanstack/react-router": "^1.114.3",
+    "@tanstack/react-router-devtools": "^1.114.3",
+    "@tanstack/router-plugin": "^1.114.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.6"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.5",
+    "web-vitals": "^4.2.4"
   },
   "bugs": {
     "url": "https://github.com/geogeorgiou/js-framework-bg/issues"
