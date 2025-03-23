@@ -7,20 +7,20 @@
   "license": "ISC",
   "type": "module",
   "directories": {
-    "lib": "lib/src"
+    "src": "src"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/geogeorgiou/js-framework-bg.git"
   },
   "scripts": {
-    "start": "cd lib && vite --port 3000",
-    "build": "cd lib && vite build && tsc",
-    "serve": "cd lib && vite preview",
-    "test": "cd lib && vitest run"
+    "start": "vite --port 3000",
+    "build": "vite build && tsc",
+    "serve": "vite preview",
+    "test": "vitest run"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
