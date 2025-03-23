@@ -1,0 +1,26 @@
+{
+  "name": "core",
+  "version": "0.0.0",
+  "description": "Core common library stuff for other packages to use",
+  "author": "awls-geogeorgiou <georgios.georgiou@allwyn-lotterysolutions.com>",
+  "homepage": "https://github.com/geogeorgiou/js-framework-bg#readme",
+  "license": "ISC",
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geogeorgiou/js-framework-bg.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/core.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/geogeorgiou/js-framework-bg/issues"
+  }
+}
