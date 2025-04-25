@@ -18,9 +18,6 @@ export async function GET(
       );
     }
 
-    console.log(id);
-    console.log(id === "123");
-
     if (id === "123") {
       return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
     }

@@ -4,6 +4,7 @@ import { Card } from "@/common/components/Card";
 import { format } from "date-fns";
 import { BackToSubscriptionsButton } from "@/common/features/subscriptions/components/BackToSubscriptionsButton";
 import { notFound } from "next/navigation";
+import { RESPONSE_STATUS } from "@/common/constants";
 
 interface Subscription {
   id: string;
@@ -15,18 +16,20 @@ interface Subscription {
 
 const baseUrl = "http://localhost:3000";
 
-// const isNumber = (value: string) => {
-//   return !isNaN(Number(value));
-// };
+type SubscriptionResponse = {
+  data: Subscription | undefined;
+  status: number;
+};
 
-const getSubscription = async (id: string) => {
+const getSubscription = async (id: string): Promise<SubscriptionResponse> => {
   const res = await fetch(`${baseUrl}/api/subscriptions/${id}`, {
     method: "GET",
   });
 
-  if (!res.ok) return undefined;
-
-  return res.json() as Promise<Subscription>;
+  return {
+    data: (await res.json()) as Subscription | undefined,
+    status: res.status,
+  };
 };
 
 export default async function SubscriptionDetail({
@@ -36,12 +39,16 @@ export default async function SubscriptionDetail({
 }) {
   const { id } = await params;
 
-  const subscription = await getSubscription(id);
+  const { data: subscription, status } = await getSubscription(id);
 
   const heading = `Subscription Details - ${id}`;
 
-  if (!subscription) {
+  if (status === RESPONSE_STATUS.NOT_FOUND) {
     notFound();
+  }
+
+  if (!subscription || status === RESPONSE_STATUS.INTERNAL_SERVER_ERROR) {
+    throw new Error("Internal Server Error");
   }
 
   return (
